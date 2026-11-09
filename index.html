@@ -539,6 +539,14 @@ h3{font-family:var(--display);font-weight:700}
 .story .card[aria-pressed="true"]{background:var(--navy)}
 .story .card[aria-pressed="true"] h3{color:#FFFFFF}
 .story .card[aria-pressed="true"] .badge{background:var(--yellow);color:var(--navy)}
+.checks{display:flex;flex-direction:column;gap:8px}
+.ck{border:0;text-align:left;background:var(--tile-blue);border-radius:10px;padding:10px 14px;cursor:pointer;font:inherit;color:var(--navy);display:flex;flex-direction:column;gap:4px}
+.ck b{font-size:16px}
+.ck span{display:none;font-size:14px;color:#2D4166}
+.ck[aria-expanded="true"]{background:#FFF3C4}
+.ck[aria-expanded="true"] span{display:block}
+#prQ small{font-size:15px}
+#prTimer{margin-top:12px}
 </style>
 </head>
 <body>
@@ -993,6 +1001,24 @@ h3{font-family:var(--display);font-weight:700}
       </div>
     </section>
 
+    <section class="slide" aria-label="Práctica bajo presión">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Qué va a hacer, soldado?</h2>
+        <div class="two st" style="--i:1;align-items:start">
+          <div class="panel">
+            <p class="small" id="prWho">Toque «Nuevo reto»</p>
+            <p class="dec-q" id="prQ">Un soldado al azar recibe una vacuna y una persona. Tiene 60 segundos para decir qué hace y cómo.</p>
+            <div class="t-btns" style="justify-content:flex-start"><button class="btn" type="button" id="prGo">Nuevo reto</button></div>
+            <div class="timer compact" data-secs="60" id="prTimer">
+              <div class="t-disp">01:00</div>
+              <div class="t-btns"><button class="btn" type="button" data-a="go">Iniciar</button><button class="btn sec" type="button" data-a="reset">Reiniciar</button></div>
+            </div>
+          </div>
+          <div class="checks" id="prChecks"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="slide" id="s-phillips" aria-label="Pregunta para grupos">
       <div class="inner">
         <h2 class="st" style="--i:0">¿Por qué una familia no vacuna a sus hijos?</h2>
@@ -1119,20 +1145,22 @@ h3{font-family:var(--display);font-weight:700}
 
     <section class="slide" aria-label="Misión del equipo">
       <div class="inner">
-        <h2 class="st" style="--i:0">¿Pueden cumplir la misión?</h2>
-        <div class="score st" style="--i:1">
-          <div class="team-s"><span>Equipo 1</span><button type="button" class="btn sec" data-s="0" data-v="-1" aria-label="Restar punto al equipo 1">−</button><b id="sc0">0</b><button type="button" class="btn" data-s="0" data-v="1" aria-label="Sumar punto al equipo 1">+</button></div>
-          <div class="team-s"><span>Equipo 2</span><button type="button" class="btn sec" data-s="1" data-v="-1" aria-label="Restar punto al equipo 2">−</button><b id="sc1">0</b><button type="button" class="btn" data-s="1" data-v="1" aria-label="Sumar punto al equipo 2">+</button></div>
-        </div>
-        <div class="ages st" style="--i:2" id="misTabs" role="group" aria-label="Rondas">
-          <button type="button" aria-pressed="true" data-m="0">1 · La torre</button><button type="button" aria-pressed="false" data-m="1">2 · El nudo humano</button><button type="button" aria-pressed="false" data-m="2">3 · El imprevisto</button><button type="button" aria-pressed="false" data-m="3">¿Cómo les fue?</button>
-        </div>
-        <div class="two st" style="--i:3;align-items:start">
-          <div class="panel"><h3 id="misT"></h3><p class="lead swap" id="misD" style="max-width:none"></p><div id="misX"></div></div>
-          <div class="timer compact" data-secs="300" id="misTimer">
-            <div class="t-disp">05:00</div>
-            <div class="t-btns"><button class="btn" type="button" data-a="go">Iniciar</button><button class="btn sec" type="button" data-a="set" data-v="300">5 min</button><button class="btn sec" type="button" data-a="set" data-v="180">3 min</button><button class="btn sec" type="button" data-a="reset">Reiniciar</button></div>
-            <button class="btn sec" type="button" id="misTeams">Formar 2 equipos al azar</button>
+        <h2 class="st" style="--i:0">¿Listos para la misión?</h2>
+        <div class="card fill st" style="--i:1"><h3>«La misión no se completa dejando atrás a nadie. Un escuadrón resiliente reconoce la dificultad, se reorganiza, pide apoyo y avanza unido».</h3></div>
+        <div class="two st" style="--i:2;align-items:start">
+          <div class="panel">
+            <ul class="rules">
+              <li>4 pisos, 8 estaciones. Cada pista los lleva a la siguiente.</li>
+              <li>Escuadrones de 3 o 4. Todos participan en cada reto.</li>
+              <li>Caminar, no correr. No entrar a oficinas ni salones en uso.</li>
+              <li>No mover las tarjetas: leer, resolver y anotar en la hoja de misión.</li>
+              <li>Al terminar, vuelvan al punto de encuentro por el expediente final.</li>
+            </ul>
+          </div>
+          <div class="timer compact" data-secs="3600" id="misTimer">
+            <div class="t-disp">60:00</div>
+            <div class="t-btns"><button class="btn" type="button" data-a="go">Iniciar</button><button class="btn sec" type="button" data-a="reset">Reiniciar</button></div>
+            <button class="btn sec" type="button" id="misTeams">Formar escuadrones</button>
             <p class="small" id="misTeamOut" aria-live="polite"></p>
           </div>
         </div>
@@ -1628,23 +1656,21 @@ if(rd){ rd.addEventListener('click',e=>{const b=e.target.closest('button'); if(!
   const d=new Date(); d.setDate(d.getDate()+(+b.dataset.d)); document.getElementById('rabDayOut').textContent='Día '+b.dataset.d+': '+d.toLocaleDateString('es-CO',{weekday:'long',day:'numeric',month:'long'})+'. Si se atrasa una dosis, se continúa: no se empieza de cero.'; }); }
 const kg=document.getElementById('rabKg');
 if(kg){ const f=n=>n.toLocaleString('es-CO'); const up=()=>{ const w=Math.max(0,+kg.value||0); document.getElementById('rabH').textContent=f(w*20)+' UI'; document.getElementById('rabE').textContent=f(w*40)+' UI'; }; kg.addEventListener('input',up); up(); }
-let SC=[0,0];
-document.querySelectorAll('.team-s .btn').forEach(b=>b.addEventListener('click',()=>{ const t=+b.dataset.s; SC[t]=Math.max(0,SC[t]+(+b.dataset.v)); document.getElementById('sc'+t).textContent=SC[t]; }));
-const MIS=[['La torre','Con 20 hojas y cinta, cada equipo construye la torre más alta que se sostenga sola. Tienen 1 minuto para planear antes de tocar el material.','5 minutos · 3 puntos para la torre más alta',300],
-['El nudo humano','De pie en círculo, cada uno toma las manos de dos compañeros que no tenga al lado. Deben desenredarse hasta formar un círculo sin soltarse.','5 minutos · 3 puntos para el primer equipo que lo logre',300],
-['El imprevisto','El docente se lleva al líder y la mitad del material. El equipo debe volver a levantar su torre, esta vez sin hablar.','3 minutos · 4 puntos si la torre se sostiene sola',180],
-['¿Cómo les fue?','¿Qué sintieron cuando perdieron al líder y el material? ¿Quién tomó la iniciativa? ¿Qué los ayudó a volver a empezar? ¿Se parece a algo que hayan vivido?','Cada uno dice una palabra que describa a su equipo',0]];
-const mt=document.getElementById('misTabs');
-if(mt){ const set=i=>{ mt.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-pressed',k==i)); const m=MIS[i]; document.getElementById('misT').textContent=m[0]; document.getElementById('misD').textContent=m[1];
-    document.getElementById('misX').innerHTML='<p class="small"><b>'+m[2]+'</b></p>';
-    if(m[3]){ const sb=document.querySelector('#misTimer [data-a="set"][data-v="'+m[3]+'"]'); if(sb) sb.click(); } };
-  mt.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) set(+b.dataset.m);}); set(0); }
-document.querySelectorAll('[data-yt]').forEach(yg=>yg.addEventListener('click',()=>{ const f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/'+yg.dataset.yt+'?autoplay=1&rel=0'; f.title=yg.dataset.t; f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; yg.replaceWith(f); }));
+const PR=[['Td a una mujer de 25 años','IM · deltoides · 90°'],['Fiebre amarilla a un adulto que viaja al Tolima','SC · brazo · 45°'],['BCG a un recién nacido (simulador)','ID · supraescapular izquierda · 10 a 15° · jeringa de insulina en la práctica'],['Influenza a un adulto de 65 años','IM · deltoides · 90°'],['Pentavalente a un bebé de 3 meses','IM · vasto externo del muslo · 90°'],['Triple viral a un niño de 12 meses','SC · brazo · 45°'],['Antirrábica, día 0, a un adulto','IM · deltoides · 90° · nunca en la nalga'],['Hepatitis B a un recién nacido','IM · vasto externo del muslo · 90°'],['Tdap a una gestante de 24 semanas','IM · deltoides · 90°']];
+const CK=[['¿Se lavó las manos?','Sí: antes y después de cada persona, siempre.'],['¿Verificó a la persona?','Nombre, edad, carné, embarazo, alergias y fiebre.'],['¿Revisó la vacuna?','Nombre, vencimiento, aspecto y temperatura de la nevera.'],['¿Limpió la zona?','Si la piel está limpia no hace falta desinfectar; si está sucia, agua y jabón. Si usa alcohol, dejarlo secar. Seguir el protocolo de la institución.'],['¿Aspiró?','No. En los sitios de vacunación no hay vasos grandes; aspirar alarga la aplicación y duele más.'],['¿Vía, sitio y ángulo?','IM 90°, SC 45°, ID 10 a 15° con el bisel hacia arriba. Inyección firme y rápida.'],['¿Desechó bien?','Sin reencapuchar, directo al guardián.'],['¿Observó y registró?','Observar 15 a 30 minutos, anotar en el carné y explicar los signos de alarma.']];
+const pc=document.getElementById('prChecks');
+if(pc){ pc.innerHTML=CK.map((c,i)=>'<button type="button" class="ck" aria-expanded="false"><b>'+(i+1)+'. '+c[0]+'</b><span>'+c[1]+'</span></button>').join('');
+  pc.addEventListener('click',e=>{const b=e.target.closest('.ck'); if(b) b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true');});
+  document.getElementById('prGo').addEventListener('click',()=>{ const p=PR[Math.floor(Math.random()*PR.length)], n=STUDENTS[Math.floor(Math.random()*STUDENTS.length)];
+    document.getElementById('prWho').innerHTML='<b>Soldado '+n+'</b>'; document.getElementById('prQ').innerHTML=p[0]+'. ¿Qué va a hacer? ¿Cómo lo va a hacer?<br><button type="button" class="btn sec" id="prAns" style="margin-top:8px">Ver respuesta</button>'; document.getElementById('prAns').addEventListener('click',ev=>{ ev.target.outerHTML='<small class="small">Respuesta: '+p[1]+'</small>'; });
+    pc.querySelectorAll('.ck').forEach(x=>x.setAttribute('aria-expanded','false'));
+    const t=document.querySelector('#prTimer [data-a="reset"]'); if(t) t.click(); const g=document.querySelector('#prTimer [data-a="go"]'); if(g) g.click(); }); }
 const sg=document.getElementById('stories');
 if(sg){ sg.addEventListener('click',e=>{const b=e.target.closest('.card'); if(!b) return; sg.querySelectorAll('.card').forEach(x=>x.setAttribute('aria-pressed',x===b));}); }
 const tb=document.getElementById('misTeams');
-if(tb){ tb.addEventListener('click',()=>{ const a=STUDENTS.slice().sort(()=>Math.random()-.5); const h=Math.ceil(a.length/2);
-  document.getElementById('misTeamOut').innerHTML='<b>Equipo 1:</b> '+a.slice(0,h).join(', ')+'<br><b>Equipo 2:</b> '+a.slice(h).join(', '); }); }
+if(tb){ tb.addEventListener('click',()=>{ const a=STUDENTS.slice().sort(()=>Math.random()-.5);
+  const sq=[['Alfa',a.slice(0,4)],['Bravo',a.slice(4,7)],['Charlie',a.slice(7,11)],['Delta',a.slice(11)]];
+  document.getElementById('misTeamOut').innerHTML='<b>Primero al edificio:</b><br>'+sq.slice(0,2).map(x=>'<b>'+x[0]+':</b> '+x[1].join(', ')).join('<br>')+'<br><b>Primero al laboratorio:</b><br>'+sq.slice(2).map(x=>'<b>'+x[0]+':</b> '+x[1].join(', ')).join('<br>'); }); }
 })();
 </script>
 
