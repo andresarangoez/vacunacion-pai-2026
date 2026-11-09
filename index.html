@@ -533,6 +533,12 @@ h3{font-family:var(--display);font-weight:700}
 .yt a{align-self:flex-start}
 .yt + .panel .scene{font-size:clamp(16px,1.6vw,19px);line-height:1.45;margin:0}
 .yt + .panel .q{padding:9px 12px}
+.yt-big{max-width:880px;margin-inline:auto;width:100%;align-self:center}
+.story .card{text-align:left;cursor:pointer;transition:transform .25s var(--ease),background .25s}
+.story .card h3{font-size:clamp(16px,1.6vw,19px);line-height:1.35}
+.story .card[aria-pressed="true"]{background:var(--navy)}
+.story .card[aria-pressed="true"] h3{color:#FFFFFF}
+.story .card[aria-pressed="true"] .badge{background:var(--yellow);color:var(--navy)}
 </style>
 </head>
 <body>
@@ -586,12 +592,12 @@ h3{font-family:var(--display);font-weight:700}
           <button type="button" class="t2" data-go="s-motivacion">Motivación y saberes previos<span>2</span></button>
           <button type="button" class="t3" data-go="sep-fund">Fundamentos de la vacunación<span>3</span></button>
           <button type="button" class="t4" data-go="sep-pai">Esquema PAI 2026<span>4</span></button>
-          <button type="button" class="t5" data-go="s-fa">Fiebre amarilla y rabia<span>5</span></button>
+          <button type="button" class="t5" data-go="s-fa">Fiebre amarilla y antirrábica<span>5</span></button>
           <button type="button" class="t2" data-go="sep-tec">Vías y sitios de aplicación<span>6</span></button>
           <button type="button" class="t1" data-go="sep-seg">Vacunación segura<span>7</span></button>
-          <button type="button" class="t3" data-go="sep-campo">Resiliencia, trabajo en equipo y liderazgo<span>8</span></button>
-          <button type="button" class="t4" data-go="s-evaluacion">Casos<span>9</span></button>
-          <button type="button" class="t5" data-go="s-conclusiones">Conclusiones<span>10</span></button>
+          <button type="button" class="t3" data-go="s-evaluacion">Casos<span>8</span></button>
+          <button type="button" class="t4" data-go="s-conclusiones">Conclusiones de vacunación<span>9</span></button>
+          <button type="button" class="t5" data-go="sep-campo">Resiliencia y trabajo en equipo<span>10</span></button>
         </div>
       </div>
     </section>
@@ -611,24 +617,13 @@ h3{font-family:var(--display);font-weight:700}
     <section class="slide" id="s-motivacion" aria-label="Motivación">
       <div class="inner">
         <h2 class="st" style="--i:0">Motivación</h2>
-        <div class="two st" style="--i:1;align-items:start">
-          <div class="yt" id="yt">
-            <button type="button" class="yt-face" data-yt="kLjs1KWJK5k" data-t="Gerardo, las vacunas" aria-label="Reproducir el video «Gerardo, las vacunas»">
-              <span class="yt-play" aria-hidden="true"></span>
-              <span class="yt-t">«Gerardo, las vacunas»</span>
-              <span class="yt-s">Un clásico de la televisión colombiana</span>
-            </button>
-            <a class="small" href="https://www.youtube.com/watch?v=kLjs1KWJK5k" target="_blank" rel="noopener">Abrir en YouTube</a>
-          </div>
-          <div class="panel">
-            <p class="scene">Jornada de salud en una vereda. Llegan 40 personas: bebés, una embarazada, adultos mayores y un grupo que viajará a una zona con fiebre amarilla. Un niño de 18 meses trae el carné incompleto y la nevera portátil marca <span class="hot">9 °C</span>.</p>
-            <div class="qs" id="qs">
-              <div class="q on"><span class="badge">1</span><p>¿Qué vacunas le tocan a cada persona?</p></div>
-              <div class="q"><span class="badge">2</span><p>¿Se pueden usar las vacunas de esa nevera?</p></div>
-              <div class="q"><span class="badge">3</span><p>¿Cómo se organiza el equipo para atender a todos?</p></div>
-            </div>
-            <div><button class="btn sec" id="qnext" type="button">Siguiente pregunta</button></div>
-          </div>
+        <div class="yt yt-big st" style="--i:1">
+          <button type="button" class="yt-face" data-yt="kLjs1KWJK5k" data-t="Gerardo, las vacunas" aria-label="Reproducir el video «Gerardo, las vacunas»">
+            <span class="yt-play" aria-hidden="true"></span>
+            <span class="yt-t">«Gerardo, las vacunas»</span>
+            <span class="yt-s">Un clásico de la televisión colombiana</span>
+          </button>
+          <a class="small" href="https://www.youtube.com/watch?v=kLjs1KWJK5k" target="_blank" rel="noopener">Abrir en YouTube</a>
         </div>
       </div>
     </section>
@@ -783,7 +778,7 @@ h3{font-family:var(--display);font-weight:700}
           <div class="card"><span class="k">Mujeres de 10 a 49 años</span><h3>Td (tétanos y difteria)</h3><p>5 dosis en total y luego un refuerzo cada 10 años.</p></div>
           <div class="card"><span class="k">Gestantes, en cada embarazo</span><h3>Tdap, influenza y VSR</h3><p>Tdap desde la semana 20, influenza desde la 14 y VSR entre la 28 y la 36. Protegen también al bebé.</p></div>
           <div class="card"><span class="k">60 años o más</span><h3>Influenza cada año</h3><p>Fiebre amarilla solo con valoración médica, si van a zona de riesgo.</p></div>
-          <div class="card gold" style="grid-column:1/-1"><span class="k">Fiebre amarilla</span><h3>Una sola dosis en niños y jóvenes; en adultos, si viven, trabajan o viajan a zona de riesgo</h3><p>La vemos en detalle en la siguiente diapositiva.</p></div>
+          <div class="card gold" style="grid-column:1/-1"><span class="k">Fiebre amarilla</span><h3>Una sola dosis en niños y jóvenes; en adultos, si viven, trabajan o viajan a zona de riesgo</h3><p>Dosis única, 10 días antes de ir a la zona de riesgo.</p></div>
         </div>
         <p class="fuente">Fuente: (1, 3, 7)</p>
       </div>
@@ -814,35 +809,21 @@ h3{font-family:var(--display);font-weight:700}
       </div>
     </section>
 
-    <section class="slide" id="s-rabia" aria-label="Mordedura de animal">
-      <div class="inner">
-        <h2 class="st" style="--i:0">¿Qué hacer si a alguien lo muerde un perro?</h2>
-        <div class="card fill st" style="--i:1"><span class="k">Primero, siempre</span><h3>Lavar la herida con agua y jabón durante 10 a 15 minutos</h3></div>
-        <div class="ages st" style="--i:2" id="rabTabs" role="group" aria-label="Tipo de exposición">
-          <button type="button" aria-pressed="true" data-t="0">No hay exposición</button><button type="button" aria-pressed="false" data-t="1">Exposición leve</button><button type="button" aria-pressed="false" data-t="2">Exposición grave</button>
-        </div>
-        <div class="two st" style="--i:3;align-items:start">
-          <div class="panel"><span class="k small">¿Cómo se reconoce?</span><p class="lead swap" id="rabWhen" style="max-width:none"></p></div>
-          <div class="panel"><span class="k small">¿Qué se hace?</span><p class="lead swap" id="rabDo" style="max-width:none"></p></div>
-        </div>
-        <p class="fuente">Fuente: (10, 11)</p>
-      </div>
-    </section>
-
     <section class="slide" id="s-rabia2" aria-label="Vacuna y suero antirrábico">
       <div class="inner">
-        <h2 class="st" style="--i:0">¿Cómo se aplican la vacuna y el suero antirrábico?</h2>
+        <h2 class="st" style="--i:0">¿Cómo se aplica la vacuna antirrábica?</h2>
         <div class="two st" style="--i:1;align-items:start">
           <div class="panel">
             <h3>Vacuna: 4 dosis</h3>
             <div class="days" id="rabDays">
               <button type="button" data-d="0"><b>Día 0</b><span>Hoy</span></button><button type="button" data-d="3"><b>Día 3</b></button><button type="button" data-d="7"><b>Día 7</b></button><button type="button" data-d="14"><b>Día 14</b></button>
             </div>
-            <p class="small">Intramuscular en el deltoides. En bebés que aún no caminan, en el muslo. Nunca en la nalga. Se da en exposición leve y grave.</p>
+            <p class="small">Se aplica después del contacto con un animal que puede transmitir la rabia: perro, gato, murciélago, mono u otro silvestre. Intramuscular en el deltoides; en bebés que aún no caminan, en el muslo. Nunca en la nalga.</p>
             <p class="why" id="rabDayOut" aria-live="polite">Toque un día para ver la fecha de la dosis si hoy es el día 0.</p>
           </div>
           <div class="panel">
-            <h3>Suero o inmunoglobulina: solo en exposición grave</h3>
+            <h3>Suero o inmunoglobulina antirrábica</h3>
+            <p class="small">Se agrega a la vacuna cuando el contacto fue grave.</p>
             <label class="calc">Peso de la persona <input id="rabKg" type="number" min="3" max="150" value="70" inputmode="numeric"> kg</label>
             <div class="calc-out">
               <div><span>Humana · 20 UI por kg</span><b id="rabH">1400 UI</b></div>
@@ -850,7 +831,7 @@ h3{font-family:var(--display);font-weight:700}
             </div>
             <ul class="rules">
               <li>Una sola vez, ojalá el día 0 (hasta el día 7).</li>
-              <li>Se infiltra dentro y alrededor de la herida, con otra jeringa y en otro sitio que la vacuna.</li>
+              <li>Se aplica en la herida, con otra jeringa y en otro sitio que la vacuna.</li>
               <li>Quien ya tuvo un esquema completo de vacuna no recibe suero.</li>
             </ul>
             <p class="small">Los mililitros dependen de la concentración del frasco: revisar el inserto.</p>
@@ -931,7 +912,7 @@ h3{font-family:var(--display);font-weight:700}
       <div class="inner">
         <div class="sep st" style="--i:0">
           <div class="sep-q"><i></i><i></i></div>
-          <div><h2>Vacunación segura</h2><p class="sep-sub">Cadena de frío, frascos abiertos, cinco pasos y eventos adversos</p></div>
+          <div><h2>Vacunación segura</h2><p class="sep-sub">Cadena de frío, frascos abiertos, pasos seguros, eventos adversos y casos</p></div>
           <span class="sep-end">”</span>
         </div>
       </div>
@@ -1012,121 +993,6 @@ h3{font-family:var(--display);font-weight:700}
       </div>
     </section>
 
-    <section class="slide dk" data-bg="blue" id="sep-campo" aria-label="Sección: Resiliencia, trabajo en equipo y liderazgo">
-      <div class="inner">
-        <div class="sep st" style="--i:0">
-          <div class="sep-q"><i></i><i></i></div>
-          <div><h2>Resiliencia, trabajo en equipo y liderazgo</h2><p class="sep-sub">Cómo se organiza y decide un equipo en una brigada de vacunación</p></div>
-          <span class="sep-end">”</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" aria-label="Video de trabajo en equipo">
-      <div class="inner">
-        <h2 class="st" style="--i:0">¿Qué hace fuerte a un equipo?</h2>
-        <div class="two st" style="--i:1;align-items:start">
-          <div class="yt">
-            <button type="button" class="yt-face" data-yt="ZlyOPxjvXt8" data-t="Trabajo en equipo y resiliencia" aria-label="Reproducir el video sobre trabajo en equipo y resiliencia">
-              <span class="yt-play" aria-hidden="true"></span>
-              <span class="yt-t">Trabajo en equipo</span>
-              <span class="yt-s">Véanlo y piensen en su brigada</span>
-            </button>
-            <a class="small" href="https://www.youtube.com/watch?v=ZlyOPxjvXt8" target="_blank" rel="noopener">Abrir en YouTube</a>
-          </div>
-          <div class="panel">
-            <div class="qs">
-              <div class="q on"><span class="badge">1</span><p>¿Qué hizo que el equipo saliera adelante?</p></div>
-              <div class="q on"><span class="badge">2</span><p>¿Qué pasó cuando algo salió mal?</p></div>
-              <div class="q on"><span class="badge">3</span><p>¿Qué de esto pasa en una jornada de vacunación?</p></div>
-            </div>
-            <div><button class="btn sec" type="button" data-ruleta="1">Ruleta: ¿quién responde?</button></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" aria-label="Resiliencia">
-      <div class="inner">
-        <h2 class="st" style="--i:0">Resiliencia</h2>
-        <p class="lead st" style="--i:1">Capacidad de mantener el trabajo bien hecho bajo presión y recuperarse después.</p>
-        <div class="two st" style="--i:2">
-          <div class="panel">
-            <div class="orb-box"><div class="orb" id="orb"></div><span class="orb-text" id="orbText">Listo</span></div>
-            <div style="text-align:center"><button class="btn" id="breathGo" type="button">Respirar juntos: 4 adentro, 6 afuera</button></div>
-          </div>
-          <div class="grid" style="gap:10px">
-            <div class="card"><span class="k">Antes</span><h3>Practicar hasta que sea rutina</h3><p>Conocer el rol propio y el del compañero. Tener un plan B.</p></div>
-            <div class="card"><span class="k">Durante</span><h3>Respirar lento, una tarea a la vez</h3><p>Decir en voz alta lo que se hace y pedir ayuda.</p></div>
-            <div class="card"><span class="k">Después</span><h3>Hablar de lo que pasó</h3><p>Qué salió bien, qué falló, qué cambiamos. Descansar.</p></div>
-          </div>
-        </div>
-        <p class="fuente">Fuente: (9)</p>
-      </div>
-    </section>
-
-    <section class="slide" id="s-mision" aria-label="Misión de la brigada">
-      <div class="inner">
-        <h2 class="st" style="--i:0">¿Pueden cumplir la misión?</h2>
-        <div class="score st" style="--i:1">
-          <div class="team-s"><span>Equipo 1</span><button type="button" class="btn sec" data-s="0" data-v="-1" aria-label="Restar punto al equipo 1">−</button><b id="sc0">0</b><button type="button" class="btn" data-s="0" data-v="1" aria-label="Sumar punto al equipo 1">+</button></div>
-          <div class="team-s"><span>Equipo 2</span><button type="button" class="btn sec" data-s="1" data-v="-1" aria-label="Restar punto al equipo 2">−</button><b id="sc1">0</b><button type="button" class="btn" data-s="1" data-v="1" aria-label="Sumar punto al equipo 2">+</button></div>
-        </div>
-        <div class="ages st" style="--i:2" id="misTabs" role="group" aria-label="Rondas">
-          <button type="button" aria-pressed="true" data-m="0">1 · La nevera</button><button type="button" aria-pressed="false" data-m="1">2 · 60 segundos</button><button type="button" aria-pressed="false" data-m="2">3 · El imprevisto</button><button type="button" aria-pressed="false" data-m="3">¿Cómo les fue?</button>
-        </div>
-        <div class="two st" style="--i:3;align-items:start">
-          <div class="panel"><h3 id="misT"></h3><p class="lead swap" id="misD" style="max-width:none"></p><div id="misX"></div></div>
-          <div class="timer compact" data-secs="300" id="misTimer">
-            <div class="t-disp">05:00</div>
-            <div class="t-btns"><button class="btn" type="button" data-a="go">Iniciar</button><button class="btn sec" type="button" data-a="set" data-v="300">5 min</button><button class="btn sec" type="button" data-a="set" data-v="60">60 s</button><button class="btn sec" type="button" data-a="reset">Reiniciar</button></div>
-            <button class="btn sec" type="button" id="misTeams">Formar 2 equipos al azar</button>
-            <p class="small" id="misTeamOut" aria-live="polite"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" aria-label="Trabajo en equipo">
-      <div class="inner">
-        <h2 class="st" style="--i:0">Trabajo en equipo en la brigada</h2>
-        <div class="grid g4 roles st" style="--i:1" id="roles">
-          <button class="card" type="button" aria-pressed="true" data-r="0"><span class="badge">1</span><h3>Líder</h3></button>
-          <button class="card" type="button" aria-pressed="false" data-r="1"><span class="badge">2</span><h3>Vacunador</h3></button>
-          <button class="card" type="button" aria-pressed="false" data-r="2"><span class="badge">3</span><h3>Registrador</h3></button>
-          <button class="card" type="button" aria-pressed="false" data-r="3"><span class="badge">4</span><h3>Cadena de frío y seguridad</h3></button>
-        </div>
-        <p class="lead swap st" style="--i:2;max-width:60ch" id="roleOut"></p>
-        <div class="two st" style="--i:3">
-          <div class="chat" id="chat" aria-live="polite"></div>
-          <div class="panel">
-            <h3>Comunicación en circuito cerrado</h3>
-            <p class="small">La orden se da con nombre. Quien la recibe la repite, la cumple y confirma. Así nada se pierde con el ruido de la jornada.</p>
-            <div><button class="btn" id="chatGo" type="button">Ver un ejemplo</button></div>
-            <p class="small" style="color:var(--coral)"><b style="color:var(--coral)">Cualquiera puede decir «¡alto!» si algo no es seguro.</b></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="slide" id="s-decisiones" aria-label="Decisiones rápidas y liderazgo">
-      <div class="inner">
-        <h2 class="st" style="--i:0">¿Qué harías en esta situación?</h2>
-        <div class="dec-prog st" style="--i:1" id="decProg"><i class="on"></i><i></i><i></i><i></i></div>
-        <div class="two st" style="--i:2">
-          <div class="panel">
-            <p class="small" id="decN">Situación 1 de 4</p>
-            <p class="dec-q" id="decQ"></p>
-          </div>
-          <div class="panel">
-            <div class="opts" id="decOpts"></div>
-            <p class="why" id="decFb" hidden></p>
-            <div><button class="btn" id="decNext" type="button" hidden>Siguiente situación</button></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="slide" id="s-phillips" aria-label="Pregunta para grupos">
       <div class="inner">
         <h2 class="st" style="--i:0">¿Por qué una familia no vacuna a sus hijos?</h2>
@@ -1187,13 +1053,134 @@ h3{font-family:var(--display);font-weight:700}
 
     <section class="slide" id="s-conclusiones" aria-label="Conclusiones">
       <div class="inner">
-        <h2 class="st" style="--i:0">Conclusiones</h2>
+        <h2 class="st" style="--i:0">Conclusiones de vacunación</h2>
         <div class="grid g2 st" style="--i:1">
           <div class="card"><span class="badge">1</span><h3>Antes de vacunar se verifica a la persona y el carné de vacunación.</h3></div>
           <div class="card"><span class="badge">2</span><h3>Vacunas entre +2 y +8 °C; el frasco abierto tiene fecha límite.</h3></div>
           <div class="card"><span class="badge">3</span><h3>Cada vacuna tiene su vía y su sitio según la edad.</h3></div>
           <div class="card"><span class="badge">4</span><h3>Ante una reacción grave: ayuda, adrenalina y notificación.</h3></div>
-          <div class="card fill" style="grid-column:1/-1"><span class="badge">5</span><h3>En campo, un equipo con roles claros y órdenes que se repiten decide mejor y se recupera más rápido.</h3></div>
+          <div class="card fill" style="grid-column:1/-1"><span class="badge">5</span><h3>En el adulto: antirrábica en 4 dosis (días 0, 3, 7 y 14) y fiebre amarilla en una sola dosis, 10 días antes de ir a zona de riesgo.</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide dk" data-bg="blue" id="sep-campo" aria-label="Sección: Resiliencia y trabajo en equipo">
+      <div class="inner">
+        <div class="sep st" style="--i:0">
+          <div class="sep-q"><i></i><i></i></div>
+          <div><h2>Resiliencia y trabajo en equipo</h2><p class="sep-sub">Cómo nos sostenemos y nos cuidamos como equipo cuando las cosas se ponen difíciles</p></div>
+          <span class="sep-end">”</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Video de trabajo en equipo">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Qué hace fuerte a un equipo?</h2>
+        <div class="two st" style="--i:1;align-items:start">
+          <div class="yt">
+            <button type="button" class="yt-face" data-yt="ZlyOPxjvXt8" data-t="Trabajo en equipo y resiliencia" aria-label="Reproducir el video sobre trabajo en equipo y resiliencia">
+              <span class="yt-play" aria-hidden="true"></span>
+              <span class="yt-t">Trabajo en equipo</span>
+              <span class="yt-s">Véanlo y piensen en su propio equipo</span>
+            </button>
+            <a class="small" href="https://www.youtube.com/watch?v=ZlyOPxjvXt8" target="_blank" rel="noopener">Abrir en YouTube</a>
+          </div>
+          <div class="panel">
+            <div class="qs">
+              <div class="q on"><span class="badge">1</span><p>¿Qué hizo que el equipo saliera adelante?</p></div>
+              <div class="q on"><span class="badge">2</span><p>¿Qué pasó cuando algo salió mal?</p></div>
+              <div class="q on"><span class="badge">3</span><p>¿Han vivido algo parecido? ¿Qué hicieron?</p></div>
+            </div>
+            <div><button class="btn sec" type="button" data-ruleta="1">Ruleta: ¿quién responde?</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Resiliencia">
+      <div class="inner">
+        <h2 class="st" style="--i:0">Resiliencia</h2>
+        <p class="lead st" style="--i:1">Capacidad de mantener el trabajo bien hecho bajo presión y recuperarse después.</p>
+        <div class="two st" style="--i:2">
+          <div class="panel">
+            <div class="orb-box"><div class="orb" id="orb"></div><span class="orb-text" id="orbText">Listo</span></div>
+            <div style="text-align:center"><button class="btn" id="breathGo" type="button">Respirar juntos: 4 adentro, 6 afuera</button></div>
+          </div>
+          <div class="grid" style="gap:10px">
+            <div class="card"><span class="k">Antes</span><h3>Practicar hasta que sea rutina</h3><p>Conocer el rol propio y el del compañero. Tener un plan B.</p></div>
+            <div class="card"><span class="k">Durante</span><h3>Respirar lento, una tarea a la vez</h3><p>Decir en voz alta lo que se hace y pedir ayuda.</p></div>
+            <div class="card"><span class="k">Después</span><h3>Hablar de lo que pasó</h3><p>Qué salió bien, qué falló, qué cambiamos. Descansar.</p></div>
+          </div>
+        </div>
+        <p class="fuente">Fuente: (9)</p>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Misión del equipo">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Pueden cumplir la misión?</h2>
+        <div class="score st" style="--i:1">
+          <div class="team-s"><span>Equipo 1</span><button type="button" class="btn sec" data-s="0" data-v="-1" aria-label="Restar punto al equipo 1">−</button><b id="sc0">0</b><button type="button" class="btn" data-s="0" data-v="1" aria-label="Sumar punto al equipo 1">+</button></div>
+          <div class="team-s"><span>Equipo 2</span><button type="button" class="btn sec" data-s="1" data-v="-1" aria-label="Restar punto al equipo 2">−</button><b id="sc1">0</b><button type="button" class="btn" data-s="1" data-v="1" aria-label="Sumar punto al equipo 2">+</button></div>
+        </div>
+        <div class="ages st" style="--i:2" id="misTabs" role="group" aria-label="Rondas">
+          <button type="button" aria-pressed="true" data-m="0">1 · La torre</button><button type="button" aria-pressed="false" data-m="1">2 · El nudo humano</button><button type="button" aria-pressed="false" data-m="2">3 · El imprevisto</button><button type="button" aria-pressed="false" data-m="3">¿Cómo les fue?</button>
+        </div>
+        <div class="two st" style="--i:3;align-items:start">
+          <div class="panel"><h3 id="misT"></h3><p class="lead swap" id="misD" style="max-width:none"></p><div id="misX"></div></div>
+          <div class="timer compact" data-secs="300" id="misTimer">
+            <div class="t-disp">05:00</div>
+            <div class="t-btns"><button class="btn" type="button" data-a="go">Iniciar</button><button class="btn sec" type="button" data-a="set" data-v="300">5 min</button><button class="btn sec" type="button" data-a="set" data-v="180">3 min</button><button class="btn sec" type="button" data-a="reset">Reiniciar</button></div>
+            <button class="btn sec" type="button" id="misTeams">Formar 2 equipos al azar</button>
+            <p class="small" id="misTeamOut" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Historias del equipo">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Quién nos quiere contar su historia?</h2>
+        <div class="grid g3 st story" style="--i:1" id="stories">
+          <button class="card" type="button" aria-pressed="false"><span class="badge">1</span><h3>Una vez que un compañero los ayudó cuando más lo necesitaban, por ejemplo, compartiéndoles su comida.</h3></button>
+          <button class="card" type="button" aria-pressed="false"><span class="badge">2</span><h3>Un momento en que todo salió mal. ¿Qué los hizo seguir adelante?</h3></button>
+          <button class="card" type="button" aria-pressed="false"><span class="badge">3</span><h3>¿Qué tiene que hacer un compañero para que ustedes confíen en él?</h3></button>
+          <button class="card" type="button" aria-pressed="false"><span class="badge">4</span><h3>Un líder que los haya marcado. ¿Qué hacía distinto?</h3></button>
+          <button class="card" type="button" aria-pressed="false"><span class="badge">5</span><h3>Después de un día muy duro, ¿qué los ayuda a recuperarse?</h3></button>
+          <button class="card" type="button" aria-pressed="false"><span class="badge">6</span><h3>¿Qué le dirían a un compañero que está a punto de rendirse?</h3></button>
+        </div>
+        <div class="st" style="--i:2"><button class="btn sec" type="button" data-ruleta="1">Ruleta: ¿quién cuenta?</button></div>
+      </div>
+    </section>
+
+    <section class="slide" id="s-decisiones" aria-label="Decisiones rápidas y liderazgo">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Qué harías en esta situación?</h2>
+        <div class="dec-prog st" style="--i:1" id="decProg"><i class="on"></i><i></i><i></i><i></i></div>
+        <div class="two st" style="--i:2">
+          <div class="panel">
+            <p class="small" id="decN">Situación 1 de 4</p>
+            <p class="dec-q" id="decQ"></p>
+          </div>
+          <div class="panel">
+            <div class="opts" id="decOpts"></div>
+            <p class="why" id="decFb" hidden></p>
+            <div><button class="btn" id="decNext" type="button" hidden>Siguiente situación</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Conclusiones de resiliencia">
+      <div class="inner">
+        <h2 class="st" style="--i:0">Conclusiones de resiliencia y trabajo en equipo</h2>
+        <div class="grid g2 st" style="--i:1">
+          <div class="card"><span class="badge">1</span><h3>La resiliencia se entrena: practicar, respirar y hacer una cosa a la vez.</h3></div>
+          <div class="card"><span class="badge">2</span><h3>Un equipo se sostiene en la confianza: nadie se queda atrás.</h3></div>
+          <div class="card"><span class="badge">3</span><h3>Decir lo que pasa y pedir ayuda a tiempo no es debilidad.</h3></div>
+          <div class="card"><span class="badge">4</span><h3>El líder da ejemplo, escucha y cuida a su gente.</h3></div>
+          <div class="card fill" style="grid-column:1/-1"><span class="badge">5</span><h3>Después de lo difícil, hablarlo y descansar también hace parte de la misión.</h3></div>
         </div>
       </div>
     </section>
@@ -1289,12 +1276,7 @@ go(hm?parseInt(hm[1],10)-1:0);
 window.addEventListener('hashchange',()=>{ const k=(location.hash||'').match(/^#slide-(\d+)$/); if(k) go(parseInt(k[1],10)-1); });
 
 /* Motivación */
-let qi=0;
-$('#qnext').addEventListener('click',()=>{
-  const qs=$$('#qs .q'); qi=(qi+1)%qs.length;
-  qs.forEach((q,i)=>q.classList.toggle('on', i<=qi));
-  $('#qnext').textContent = qi===qs.length-1 ? 'Volver a empezar' : 'Siguiente pregunta';
-});
+
 
 /* Saberes previos */
 const TF=[
@@ -1502,23 +1484,12 @@ $('#symLeve').addEventListener('click',()=>answer('leve'));
 $('#symGrave').addEventListener('click',()=>answer('grave'));
 showSym();
 
-/* Roles */
-const ROLES=['<b>Líder:</b> organiza la jornada, reparte las tareas, prioriza a quién se atiende primero y toma las decisiones cuando algo cambia.','<b>Vacunador:</b> revisa a la persona y la vacuna, prepara y aplica con la técnica correcta.','<b>Registrador:</b> revisa el carné, anota en el carné y en la plataforma de registro del PAI la vacuna, el lote y la hora.','<b>Cadena de frío y seguridad:</b> vigila el termo y su temperatura, el guardián y el kit de emergencia; organiza la fila.'];
-function renderRole(i){ $$('#roles button').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.r===i))); swapIn($('#roleOut'),ROLES[i]); }
-$$('#roles button').forEach(b=>b.addEventListener('click',()=>renderRole(+b.dataset.r)));
-renderRole(0);
-const CHAT=[['l','Líder','Laura, revisa la temperatura del termo.'],['r','Laura','Reviso la temperatura del termo.'],['r','Laura','Termo en 5 °C. Dentro del rango.'],['l','Líder','Recibido. Carlos, sigue con la fila de bebés.'],['r','Carlos','Sigo con la fila de bebés.']];
-let cT=[];
-function bubble(m){ const d=document.createElement('div'); d.className='bubble '+m[0]; d.innerHTML='<small>'+m[1]+'</small>'+m[2]; $('#chat').appendChild(d); }
-$('#chatGo').addEventListener('click',()=>{ cT.forEach(clearTimeout); cT=[]; $('#chat').innerHTML=''; CHAT.forEach((m,i)=>cT.push(setTimeout(()=>bubble(m),reduce?0:i*900))); $('#chatGo').textContent='Repetir'; });
-CHAT.slice(0,2).forEach(bubble);
-
 /* Decisiones rápidas */
 const DEC=[
-  {q:'Llegan 40 personas al tiempo y solo hay dos vacunadores.',o:[['Vacunar en el orden de llegada, sin organizar.',0],['El líder organiza dos filas (revisión de carné y vacunación) y prioriza bebés, gestantes y adultos mayores.',1],['Pedir a la mitad que vuelva otro día.',0]],fb:'Organizar antes de actuar ahorra tiempo y evita errores. Priorizar es una decisión del líder.'},
-  {q:'Se va la luz y la nevera empieza a calentarse.',o:[['Esperar a que vuelva la luz.',0],['Vacunar rápido con lo que hay antes de que se dañe.',0],['Pasar las vacunas al termo con paquetes fríos, anotar hora y temperatura y avisar al responsable.',1]],fb:'Primero se protege la cadena de frío. Una vacuna dañada se aplica, pero no protege.'},
-  {q:'Un compañero se ve agotado y empieza a equivocarse en los registros.',o:[['No decir nada para no incomodarlo.',0],['El líder pide una pausa corta, cambia los roles y revisa con él los registros.',1],['Corregirlo en voz alta delante de la comunidad.',0]],fb:'Cuidar al equipo también es liderazgo. Una pausa a tiempo evita errores mayores.'},
-  {q:'Una señora se desmaya minutos después de vacunarse.',o:[['Todos corren a ayudarla y la fila queda sola.',0],['Seguir vacunando; seguro se recupera.',0],['Uno la atiende y la acuesta, otro pide ayuda y trae el kit, otro anota la hora y mantiene la fila.',1]],fb:'Roles claros en la emergencia: cada uno sabe qué hacer y nadie queda desatendido.'}
+  {q:'Llevan dos días en terreno y a un compañero se le acabó la comida.',o:[['Cada uno se las arregla con lo suyo.',0],['Compartir lo que hay y avisar al líder para repartir mejor lo que queda.',1],['Esperar a que él pida ayuda.',0]],fb:'En un equipo nadie se queda atrás. Compartir y avisar a tiempo sostiene a todo el grupo.'},
+  {q:'Dos compañeros discuten fuerte y el grupo se empieza a dividir.',o:[['Tomar partido por el que tenga la razón.',0],['Ignorarlo; ya se les pasará.',0],['El líder los separa un momento, escucha a cada uno y recuerda el objetivo común.',1]],fb:'El conflicto no desaparece solo. Escuchar a ambos y volver al objetivo une al equipo.'},
+  {q:'Un compañero no puede seguir el ritmo y van a llegar tarde.',o:[['Dejarlo atrás para no retrasar a todos.',0],['Repartir su carga, ajustar el paso y avanzar juntos.',1],['Regañarlo delante de todos para que se apure.',0]],fb:'El equipo avanza al ritmo de todos. Ayudar al que se queda fortalece la confianza.'},
+  {q:'Termina un día muy duro y todos están callados y tensos.',o:[['Irse a dormir sin hablar del tema.',0],['Buscar al culpable de lo que salió mal.',0],['Hacer un momento corto para hablar de qué pasó, qué salió bien y cómo se sienten.',1]],fb:'Hablar de lo que pasó ayuda a soltar la tensión y a aprender para la próxima.'}
 ];
 let di=0;
 function renderDec(){
@@ -1659,17 +1630,18 @@ const kg=document.getElementById('rabKg');
 if(kg){ const f=n=>n.toLocaleString('es-CO'); const up=()=>{ const w=Math.max(0,+kg.value||0); document.getElementById('rabH').textContent=f(w*20)+' UI'; document.getElementById('rabE').textContent=f(w*40)+' UI'; }; kg.addEventListener('input',up); up(); }
 let SC=[0,0];
 document.querySelectorAll('.team-s .btn').forEach(b=>b.addEventListener('click',()=>{ const t=+b.dataset.s; SC[t]=Math.max(0,SC[t]+(+b.dataset.v)); document.getElementById('sc'+t).textContent=SC[t]; }));
-const MIS=[['Relevo de la nevera','En relevo, cada uno saca una tarjeta de vacuna de la nevera y la lleva a la mesa correcta: ¿viva o inactivada? ¿Por qué vía? Solo el líder ve la hoja de ayuda y da instrucciones, sin tocar las tarjetas. Si una tarjeta está mal, vuelve a la nevera.','5 minutos · 1 punto por tarjeta bien puesta',300],
-['Decidir en 60 segundos','Escuchen la situación. Tienen 60 segundos para decidir y levantar una tarjeta: verde (vacunar), amarilla (vacunar con cuidado o consultar) o roja (no vacunar o remitir). El líder explica en una frase.','5 situaciones · 2 puntos por decisión correcta',60],
-['El imprevisto','Ordenen en la pared los 8 pasos de una vacunación segura. Atención: el plan puede cambiar en cualquier momento.','4 puntos si el orden queda correcto',300],
-['¿Cómo les fue?','¿Qué sintieron cuando cambió el plan? ¿Quién tomó la iniciativa? ¿Qué los ayudó a recuperarse? ¿Qué harían igual en una brigada real?','Cada uno dice una palabra para la brigada',0]];
-const SIT=['Una persona mordida por un perro callejero en la mano, sangrando.','La nevera marca 11 °C desde hace 3 horas.','Gestante de 24 semanas sin las vacunas del embarazo.','Hombre de 35 años que viaja en 3 días a una zona de fiebre amarilla.','Bebé de 2 meses con fiebre de 38 °C al día siguiente de vacunarse.'];
+const MIS=[['La torre','Con 20 hojas y cinta, cada equipo construye la torre más alta que se sostenga sola. Tienen 1 minuto para planear antes de tocar el material.','5 minutos · 3 puntos para la torre más alta',300],
+['El nudo humano','De pie en círculo, cada uno toma las manos de dos compañeros que no tenga al lado. Deben desenredarse hasta formar un círculo sin soltarse.','5 minutos · 3 puntos para el primer equipo que lo logre',300],
+['El imprevisto','El docente se lleva al líder y la mitad del material. El equipo debe volver a levantar su torre, esta vez sin hablar.','3 minutos · 4 puntos si la torre se sostiene sola',180],
+['¿Cómo les fue?','¿Qué sintieron cuando perdieron al líder y el material? ¿Quién tomó la iniciativa? ¿Qué los ayudó a volver a empezar? ¿Se parece a algo que hayan vivido?','Cada uno dice una palabra que describa a su equipo',0]];
 const mt=document.getElementById('misTabs');
 if(mt){ const set=i=>{ mt.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-pressed',k==i)); const m=MIS[i]; document.getElementById('misT').textContent=m[0]; document.getElementById('misD').textContent=m[1];
-    document.getElementById('misX').innerHTML='<p class="small"><b>'+m[2]+'</b></p>'+(i==1?'<ol class="mis-list">'+SIT.map(s=>'<li>'+s+'</li>').join('')+'</ol>':'');
+    document.getElementById('misX').innerHTML='<p class="small"><b>'+m[2]+'</b></p>';
     if(m[3]){ const sb=document.querySelector('#misTimer [data-a="set"][data-v="'+m[3]+'"]'); if(sb) sb.click(); } };
   mt.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) set(+b.dataset.m);}); set(0); }
 document.querySelectorAll('[data-yt]').forEach(yg=>yg.addEventListener('click',()=>{ const f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/'+yg.dataset.yt+'?autoplay=1&rel=0'; f.title=yg.dataset.t; f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; yg.replaceWith(f); }));
+const sg=document.getElementById('stories');
+if(sg){ sg.addEventListener('click',e=>{const b=e.target.closest('.card'); if(!b) return; sg.querySelectorAll('.card').forEach(x=>x.setAttribute('aria-pressed',x===b));}); }
 const tb=document.getElementById('misTeams');
 if(tb){ tb.addEventListener('click',()=>{ const a=STUDENTS.slice().sort(()=>Math.random()-.5); const h=Math.ceil(a.length/2);
   document.getElementById('misTeamOut').innerHTML='<b>Equipo 1:</b> '+a.slice(0,h).join(', ')+'<br><b>Equipo 2:</b> '+a.slice(h).join(', '); }); }
