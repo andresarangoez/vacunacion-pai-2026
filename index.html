@@ -613,7 +613,7 @@ h3{font-family:var(--display);font-weight:700}
         <h2 class="st" style="--i:0">Motivación</h2>
         <div class="two st" style="--i:1;align-items:start">
           <div class="yt" id="yt">
-            <button type="button" class="yt-face" id="ytGo" aria-label="Reproducir el video «Gerardo, las vacunas»">
+            <button type="button" class="yt-face" data-yt="kLjs1KWJK5k" data-t="Gerardo, las vacunas" aria-label="Reproducir el video «Gerardo, las vacunas»">
               <span class="yt-play" aria-hidden="true"></span>
               <span class="yt-t">«Gerardo, las vacunas»</span>
               <span class="yt-s">Un clásico de la televisión colombiana</span>
@@ -1018,6 +1018,30 @@ h3{font-family:var(--display);font-weight:700}
           <div class="sep-q"><i></i><i></i></div>
           <div><h2>Resiliencia, trabajo en equipo y liderazgo</h2><p class="sep-sub">Cómo se organiza y decide un equipo en una brigada de vacunación</p></div>
           <span class="sep-end">”</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Video de trabajo en equipo">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Qué hace fuerte a un equipo?</h2>
+        <div class="two st" style="--i:1;align-items:start">
+          <div class="yt">
+            <button type="button" class="yt-face" data-yt="ZlyOPxjvXt8" data-t="Trabajo en equipo y resiliencia" aria-label="Reproducir el video sobre trabajo en equipo y resiliencia">
+              <span class="yt-play" aria-hidden="true"></span>
+              <span class="yt-t">Trabajo en equipo</span>
+              <span class="yt-s">Véanlo y piensen en su brigada</span>
+            </button>
+            <a class="small" href="https://www.youtube.com/watch?v=ZlyOPxjvXt8" target="_blank" rel="noopener">Abrir en YouTube</a>
+          </div>
+          <div class="panel">
+            <div class="qs">
+              <div class="q on"><span class="badge">1</span><p>¿Qué hizo que el equipo saliera adelante?</p></div>
+              <div class="q on"><span class="badge">2</span><p>¿Qué pasó cuando algo salió mal?</p></div>
+              <div class="q on"><span class="badge">3</span><p>¿Qué de esto pasa en una jornada de vacunación?</p></div>
+            </div>
+            <div><button class="btn sec" type="button" data-ruleta="1">Ruleta: ¿quién responde?</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1645,8 +1669,7 @@ if(mt){ const set=i=>{ mt.querySelectorAll('button').forEach((b,k)=>b.setAttribu
     document.getElementById('misX').innerHTML='<p class="small"><b>'+m[2]+'</b></p>'+(i==1?'<ol class="mis-list">'+SIT.map(s=>'<li>'+s+'</li>').join('')+'</ol>':'');
     if(m[3]){ const sb=document.querySelector('#misTimer [data-a="set"][data-v="'+m[3]+'"]'); if(sb) sb.click(); } };
   mt.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) set(+b.dataset.m);}); set(0); }
-const yg=document.getElementById('ytGo');
-if(yg){ yg.addEventListener('click',()=>{ const f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/kLjs1KWJK5k?autoplay=1&rel=0'; f.title='Gerardo, las vacunas'; f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; yg.replaceWith(f); }); }
+document.querySelectorAll('[data-yt]').forEach(yg=>yg.addEventListener('click',()=>{ const f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/'+yg.dataset.yt+'?autoplay=1&rel=0'; f.title=yg.dataset.t; f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; yg.replaceWith(f); }));
 const tb=document.getElementById('misTeams');
 if(tb){ tb.addEventListener('click',()=>{ const a=STUDENTS.slice().sort(()=>Math.random()-.5); const h=Math.ceil(a.length/2);
   document.getElementById('misTeamOut').innerHTML='<b>Equipo 1:</b> '+a.slice(0,h).join(', ')+'<br><b>Equipo 2:</b> '+a.slice(h).join(', '); }); }
