@@ -492,6 +492,47 @@ h3{font-family:var(--display);font-weight:700}
 .r-out b{font-family:var(--display)}
 /* Equipos */
 .case .team{font-weight:500;color:var(--muted)}
+/* Cifras */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stats div{background:var(--tile-yellow);border-radius:8px;padding:12px 16px;display:flex;flex-direction:column}
+.stats b{font-family:var(--display);font-size:clamp(28px,3.4vw,40px);color:var(--navy);line-height:1.05}
+.stats span{font-size:14px;color:#5A4A1E}
+@media (max-width:620px){.stats{grid-template-columns:1fr}}
+.chip{border:0;cursor:pointer;font:inherit;font-size:15px}
+.chip.on{background:var(--navy);color:#FFFFFF}
+/* Días de vacuna */
+.days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;position:relative}
+.days button{border:0;border-radius:10px;background:var(--tile-blue);padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;font:inherit;color:var(--navy)}
+.days button b{font-family:var(--display);font-size:20px}
+.days button span{font-size:12px;color:var(--muted)}
+.days button[aria-pressed="true"]{background:var(--navy);color:#FFFFFF}
+.days button[aria-pressed="true"] span{color:#D6E2F7}
+/* Calculadora */
+.calc{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);flex-wrap:wrap}
+.calc input{width:90px;font:inherit;font-size:20px;font-weight:700;padding:6px 10px;border:2px solid var(--line);border-radius:8px;color:var(--navy)}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.calc-out div{background:var(--tile-blue);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column}
+.calc-out span{font-size:13px;color:var(--muted)}
+.calc-out b{font-family:var(--display);font-size:24px;color:var(--navy);font-variant-numeric:tabular-nums}
+/* Marcador */
+.score{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.team-s{display:flex;align-items:center;gap:10px;background:var(--navy);border-radius:10px;padding:8px 12px;color:#FFFFFF}
+.team-s span{flex:1;font-weight:700;font-family:var(--display)}
+.team-s b{font-family:var(--display);font-size:32px;min-width:2ch;text-align:center;color:#FFE27A;font-variant-numeric:tabular-nums}
+.team-s .btn{padding:6px 14px;min-width:44px}
+.mis-list{margin:8px 0 0;padding-left:20px;color:var(--text);font-size:15px;line-height:1.5}
+/* Video */
+.yt{display:flex;flex-direction:column;gap:8px}
+.yt-face,.yt iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px}
+.yt-face{background:radial-gradient(120% 90% at 30% 20%,#2F6FD0,#0D2C66);color:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;font:inherit;transition:transform .25s var(--ease)}
+.yt-face:hover{transform:scale(1.01)}
+.yt-play{width:68px;height:68px;border-radius:50%;background:#FFE27A;position:relative}
+.yt-play::after{content:"";position:absolute;left:27px;top:20px;border-left:22px solid #0D2C66;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.yt-t{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);font-weight:800}
+.yt-s{font-size:14px;color:#D6E2F7}
+.yt a{align-self:flex-start}
+.yt + .panel .scene{font-size:clamp(16px,1.6vw,19px);line-height:1.45;margin:0}
+.yt + .panel .q{padding:9px 12px}
 </style>
 </head>
 <body>
@@ -545,9 +586,9 @@ h3{font-family:var(--display);font-weight:700}
           <button type="button" class="t2" data-go="s-motivacion">Motivación y saberes previos<span>2</span></button>
           <button type="button" class="t3" data-go="sep-fund">Fundamentos de la vacunación<span>3</span></button>
           <button type="button" class="t4" data-go="sep-pai">Esquema PAI 2026<span>4</span></button>
-          <button type="button" class="t5" data-go="sep-tec">Vías y sitios de aplicación<span>5</span></button>
-          <button type="button" class="t2" data-go="sep-seg">Vacunación segura<span>6</span></button>
-          <button type="button" class="t1" data-go="s-eventos">Eventos adversos<span>7</span></button>
+          <button type="button" class="t5" data-go="s-fa">Fiebre amarilla y rabia<span>5</span></button>
+          <button type="button" class="t2" data-go="sep-tec">Vías y sitios de aplicación<span>6</span></button>
+          <button type="button" class="t1" data-go="sep-seg">Vacunación segura<span>7</span></button>
           <button type="button" class="t3" data-go="sep-campo">Resiliencia, trabajo en equipo y liderazgo<span>8</span></button>
           <button type="button" class="t4" data-go="s-evaluacion">Casos<span>9</span></button>
           <button type="button" class="t5" data-go="s-conclusiones">Conclusiones<span>10</span></button>
@@ -570,13 +611,25 @@ h3{font-family:var(--display);font-weight:700}
     <section class="slide" id="s-motivacion" aria-label="Motivación">
       <div class="inner">
         <h2 class="st" style="--i:0">Motivación</h2>
-        <p class="scene st" style="--i:1">Jornada de salud en una vereda. Llegan 40 personas: bebés, una embarazada, adultos mayores y un grupo que viajará a una zona con fiebre amarilla. Un niño de 18 meses trae el carné incompleto y la nevera portátil marca <span class="hot">9 °C</span>.</p>
-        <div class="qs st" style="--i:2" id="qs">
-          <div class="q on"><span class="badge">1</span><p>¿Qué vacunas le tocan a cada persona?</p></div>
-          <div class="q"><span class="badge">2</span><p>¿Se pueden usar las vacunas de esa nevera?</p></div>
-          <div class="q"><span class="badge">3</span><p>¿Cómo se organiza el equipo para atender a todos?</p></div>
+        <div class="two st" style="--i:1;align-items:start">
+          <div class="yt" id="yt">
+            <button type="button" class="yt-face" id="ytGo" aria-label="Reproducir el video «Gerardo, las vacunas»">
+              <span class="yt-play" aria-hidden="true"></span>
+              <span class="yt-t">«Gerardo, las vacunas»</span>
+              <span class="yt-s">Un clásico de la televisión colombiana</span>
+            </button>
+            <a class="small" href="https://www.youtube.com/watch?v=kLjs1KWJK5k" target="_blank" rel="noopener">Abrir en YouTube</a>
+          </div>
+          <div class="panel">
+            <p class="scene">Jornada de salud en una vereda. Llegan 40 personas: bebés, una embarazada, adultos mayores y un grupo que viajará a una zona con fiebre amarilla. Un niño de 18 meses trae el carné incompleto y la nevera portátil marca <span class="hot">9 °C</span>.</p>
+            <div class="qs" id="qs">
+              <div class="q on"><span class="badge">1</span><p>¿Qué vacunas le tocan a cada persona?</p></div>
+              <div class="q"><span class="badge">2</span><p>¿Se pueden usar las vacunas de esa nevera?</p></div>
+              <div class="q"><span class="badge">3</span><p>¿Cómo se organiza el equipo para atender a todos?</p></div>
+            </div>
+            <div><button class="btn sec" id="qnext" type="button">Siguiente pregunta</button></div>
+          </div>
         </div>
-        <div class="st" style="--i:3"><button class="btn sec" id="qnext" type="button">Siguiente pregunta</button></div>
       </div>
     </section>
 
@@ -702,7 +755,7 @@ h3{font-family:var(--display);font-weight:700}
       <div class="inner">
         <div class="sep st" style="--i:0">
           <div class="sep-q"><i></i><i></i></div>
-          <div><h2>Esquema PAI 2026</h2><p class="sep-sub">Programa Ampliado de Inmunizaciones: qué vacuna le toca a cada edad</p></div>
+          <div><h2>Esquema PAI 2026</h2><p class="sep-sub">Qué vacuna le toca a cada edad: niños, gestantes y adultos</p></div>
           <span class="sep-end">”</span>
         </div>
       </div>
@@ -711,7 +764,7 @@ h3{font-family:var(--display);font-weight:700}
     <section class="slide" aria-label="Esquema PAI niños">
       <div class="inner">
         <h2 class="st" style="--i:0">Esquema PAI 2026 en niños</h2>
-        <p class="small st" style="--i:1">Programa Ampliado de Inmunizaciones (PAI) del Ministerio de Salud. Las dosis se registran en el carné y en la plataforma nacional del PAI (PAIWEB).</p>
+        <p class="small st" style="--i:1">Programa Ampliado de Inmunizaciones (PAI) del Ministerio de Salud. Cada dosis se anota en el carné de vacunación.</p>
         <div class="ages st" style="--i:2" id="ages" role="group" aria-label="Edades"></div>
         <div class="vlist" id="vlist" aria-live="polite"></div>
         <p class="note" id="ageNote" hidden></p>
@@ -729,10 +782,81 @@ h3{font-family:var(--display);font-weight:700}
           <div class="card"><span class="k">9 a 17 años</span><h3>VPH (virus del papiloma humano)</h3><p>Una sola dosis, a niñas y niños.</p></div>
           <div class="card"><span class="k">Mujeres de 10 a 49 años</span><h3>Td (tétanos y difteria)</h3><p>5 dosis en total y luego un refuerzo cada 10 años.</p></div>
           <div class="card"><span class="k">Gestantes, en cada embarazo</span><h3>Tdap, influenza y VSR</h3><p>Tdap desde la semana 20, influenza desde la 14 y VSR entre la 28 y la 36. Protegen también al bebé.</p></div>
-          <div class="card"><span class="k">60 años o más</span><h3>Influenza cada año</h3><p>Y fiebre amarilla solo si viven o viajan a zona de riesgo, con valoración.</p></div>
-          <div class="card gold" style="grid-column:1/-1"><span class="k">Fiebre amarilla</span><h3>Una sola dosis, de los 9 meses a los 19 años, en todo el país</h3><p>También para viajeros a zonas de riesgo. No necesita refuerzo, salvo que la autoridad sanitaria lo indique.</p></div>
+          <div class="card"><span class="k">60 años o más</span><h3>Influenza cada año</h3><p>Fiebre amarilla solo con valoración médica, si van a zona de riesgo.</p></div>
+          <div class="card gold" style="grid-column:1/-1"><span class="k">Fiebre amarilla</span><h3>Una sola dosis en niños y jóvenes; en adultos, si viven, trabajan o viajan a zona de riesgo</h3><p>La vemos en detalle en la siguiente diapositiva.</p></div>
         </div>
         <p class="fuente">Fuente: (1, 3, 7)</p>
+      </div>
+    </section>
+
+    <section class="slide" id="s-fa" aria-label="Fiebre amarilla en adultos">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Por qué importa la fiebre amarilla en campo?</h2>
+        <div class="stats st" style="--i:1">
+          <div><b>125</b><span>casos en Colombia en 2025</span></div>
+          <div><b>1 de 3</b><span>personas enfermas murió</span></div>
+          <div><b>9 de 10</b><span>no estaban vacunadas</span></div>
+        </div>
+        <div class="two st" style="--i:2;align-items:start">
+          <div class="grid" style="gap:10px">
+            <div class="card"><span class="k">¿Quién se vacuna?</span><h3>Adultos que viven, trabajan o viajan a zona de riesgo</h3><p>Una sola dosis de 0,5 ml, subcutánea, en el brazo. Protege desde los 10 días: hay que vacunarse antes de salir.</p></div>
+            <div class="card gold"><span class="k">¿Quién no, o con cuidado?</span><h3>Bebés menores de 6 meses, alergia grave al huevo y defensas muy bajas</h3><p>Gestantes y mayores de 60 años: solo con valoración médica si el riesgo es alto.</p></div>
+          </div>
+          <div class="panel">
+            <h3>¿Dónde está el riesgo?</h3>
+            <div class="chips" id="faZones">
+              <button class="chip on" type="button" data-z="0">Tolima</button><button class="chip" type="button" data-z="1">Meta y Llanos</button><button class="chip" type="button" data-z="2">Putumayo y Amazonía</button><button class="chip" type="button" data-z="3">Ustedes en campo</button>
+            </div>
+            <p class="why swap" id="faOut" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="fuente">Fuente: (12, 13)</p>
+      </div>
+    </section>
+
+    <section class="slide" id="s-rabia" aria-label="Mordedura de animal">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Qué hacer si a alguien lo muerde un perro?</h2>
+        <div class="card fill st" style="--i:1"><span class="k">Primero, siempre</span><h3>Lavar la herida con agua y jabón durante 10 a 15 minutos</h3></div>
+        <div class="ages st" style="--i:2" id="rabTabs" role="group" aria-label="Tipo de exposición">
+          <button type="button" aria-pressed="true" data-t="0">No hay exposición</button><button type="button" aria-pressed="false" data-t="1">Exposición leve</button><button type="button" aria-pressed="false" data-t="2">Exposición grave</button>
+        </div>
+        <div class="two st" style="--i:3;align-items:start">
+          <div class="panel"><span class="k small">¿Cómo se reconoce?</span><p class="lead swap" id="rabWhen" style="max-width:none"></p></div>
+          <div class="panel"><span class="k small">¿Qué se hace?</span><p class="lead swap" id="rabDo" style="max-width:none"></p></div>
+        </div>
+        <p class="fuente">Fuente: (10, 11)</p>
+      </div>
+    </section>
+
+    <section class="slide" id="s-rabia2" aria-label="Vacuna y suero antirrábico">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Cómo se aplican la vacuna y el suero antirrábico?</h2>
+        <div class="two st" style="--i:1;align-items:start">
+          <div class="panel">
+            <h3>Vacuna: 4 dosis</h3>
+            <div class="days" id="rabDays">
+              <button type="button" data-d="0"><b>Día 0</b><span>Hoy</span></button><button type="button" data-d="3"><b>Día 3</b></button><button type="button" data-d="7"><b>Día 7</b></button><button type="button" data-d="14"><b>Día 14</b></button>
+            </div>
+            <p class="small">Intramuscular en el deltoides. En bebés que aún no caminan, en el muslo. Nunca en la nalga. Se da en exposición leve y grave.</p>
+            <p class="why" id="rabDayOut" aria-live="polite">Toque un día para ver la fecha de la dosis si hoy es el día 0.</p>
+          </div>
+          <div class="panel">
+            <h3>Suero o inmunoglobulina: solo en exposición grave</h3>
+            <label class="calc">Peso de la persona <input id="rabKg" type="number" min="3" max="150" value="70" inputmode="numeric"> kg</label>
+            <div class="calc-out">
+              <div><span>Humana · 20 UI por kg</span><b id="rabH">1400 UI</b></div>
+              <div><span>Equina · 40 UI por kg</span><b id="rabE">2800 UI</b></div>
+            </div>
+            <ul class="rules">
+              <li>Una sola vez, ojalá el día 0 (hasta el día 7).</li>
+              <li>Se infiltra dentro y alrededor de la herida, con otra jeringa y en otro sitio que la vacuna.</li>
+              <li>Quien ya tuvo un esquema completo de vacuna no recibe suero.</li>
+            </ul>
+            <p class="small">Los mililitros dependen de la concentración del frasco: revisar el inserto.</p>
+          </div>
+        </div>
+        <p class="fuente">Fuente: (10, 11)</p>
       </div>
     </section>
 
@@ -898,6 +1022,47 @@ h3{font-family:var(--display);font-weight:700}
       </div>
     </section>
 
+    <section class="slide" aria-label="Resiliencia">
+      <div class="inner">
+        <h2 class="st" style="--i:0">Resiliencia</h2>
+        <p class="lead st" style="--i:1">Capacidad de mantener el trabajo bien hecho bajo presión y recuperarse después.</p>
+        <div class="two st" style="--i:2">
+          <div class="panel">
+            <div class="orb-box"><div class="orb" id="orb"></div><span class="orb-text" id="orbText">Listo</span></div>
+            <div style="text-align:center"><button class="btn" id="breathGo" type="button">Respirar juntos: 4 adentro, 6 afuera</button></div>
+          </div>
+          <div class="grid" style="gap:10px">
+            <div class="card"><span class="k">Antes</span><h3>Practicar hasta que sea rutina</h3><p>Conocer el rol propio y el del compañero. Tener un plan B.</p></div>
+            <div class="card"><span class="k">Durante</span><h3>Respirar lento, una tarea a la vez</h3><p>Decir en voz alta lo que se hace y pedir ayuda.</p></div>
+            <div class="card"><span class="k">Después</span><h3>Hablar de lo que pasó</h3><p>Qué salió bien, qué falló, qué cambiamos. Descansar.</p></div>
+          </div>
+        </div>
+        <p class="fuente">Fuente: (9)</p>
+      </div>
+    </section>
+
+    <section class="slide" id="s-mision" aria-label="Misión de la brigada">
+      <div class="inner">
+        <h2 class="st" style="--i:0">¿Pueden cumplir la misión?</h2>
+        <div class="score st" style="--i:1">
+          <div class="team-s"><span>Equipo 1</span><button type="button" class="btn sec" data-s="0" data-v="-1" aria-label="Restar punto al equipo 1">−</button><b id="sc0">0</b><button type="button" class="btn" data-s="0" data-v="1" aria-label="Sumar punto al equipo 1">+</button></div>
+          <div class="team-s"><span>Equipo 2</span><button type="button" class="btn sec" data-s="1" data-v="-1" aria-label="Restar punto al equipo 2">−</button><b id="sc1">0</b><button type="button" class="btn" data-s="1" data-v="1" aria-label="Sumar punto al equipo 2">+</button></div>
+        </div>
+        <div class="ages st" style="--i:2" id="misTabs" role="group" aria-label="Rondas">
+          <button type="button" aria-pressed="true" data-m="0">1 · La nevera</button><button type="button" aria-pressed="false" data-m="1">2 · 60 segundos</button><button type="button" aria-pressed="false" data-m="2">3 · El imprevisto</button><button type="button" aria-pressed="false" data-m="3">¿Cómo les fue?</button>
+        </div>
+        <div class="two st" style="--i:3;align-items:start">
+          <div class="panel"><h3 id="misT"></h3><p class="lead swap" id="misD" style="max-width:none"></p><div id="misX"></div></div>
+          <div class="timer compact" data-secs="300" id="misTimer">
+            <div class="t-disp">05:00</div>
+            <div class="t-btns"><button class="btn" type="button" data-a="go">Iniciar</button><button class="btn sec" type="button" data-a="set" data-v="300">5 min</button><button class="btn sec" type="button" data-a="set" data-v="60">60 s</button><button class="btn sec" type="button" data-a="reset">Reiniciar</button></div>
+            <button class="btn sec" type="button" id="misTeams">Formar 2 equipos al azar</button>
+            <p class="small" id="misTeamOut" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="slide" aria-label="Trabajo en equipo">
       <div class="inner">
         <h2 class="st" style="--i:0">Trabajo en equipo en la brigada</h2>
@@ -960,24 +1125,6 @@ h3{font-family:var(--display);font-weight:700}
       </div>
     </section>
 
-    <section class="slide" aria-label="Resiliencia">
-      <div class="inner">
-        <h2 class="st" style="--i:0">Resiliencia</h2>
-        <p class="lead st" style="--i:1">Capacidad de mantener el trabajo bien hecho bajo presión y recuperarse después.</p>
-        <div class="two st" style="--i:2">
-          <div class="panel">
-            <div class="orb-box"><div class="orb" id="orb"></div><span class="orb-text" id="orbText">Listo</span></div>
-            <div style="text-align:center"><button class="btn" id="breathGo" type="button">Respirar juntos: 4 adentro, 6 afuera</button></div>
-          </div>
-          <div class="grid" style="gap:10px">
-            <div class="card"><span class="k">Antes</span><h3>Practicar hasta que sea rutina</h3><p>Conocer el rol propio y el del compañero. Tener un plan B.</p></div>
-            <div class="card"><span class="k">Durante</span><h3>Respirar lento, una tarea a la vez</h3><p>Decir en voz alta lo que se hace y pedir ayuda.</p></div>
-            <div class="card"><span class="k">Después</span><h3>Hablar de lo que pasó</h3><p>Qué salió bien, qué falló, qué cambiamos. Descansar.</p></div>
-          </div>
-        </div>
-        <p class="fuente">Fuente: (9)</p>
-      </div>
-    </section>
 
     <section class="slide" id="s-evaluacion" aria-label="Evaluación">
       <div class="inner">
@@ -992,7 +1139,7 @@ h3{font-family:var(--display);font-weight:700}
           <button class="card case" type="button" aria-expanded="false"><span class="k">Caso 3 · <span class="team"></span></span><h3>Un adulto con ronchas y ahogo minutos después de vacunarse</h3><span class="more">Ver qué decidir</span><span class="ans"><div><p>Quién pide ayuda, quién atiende, quién prepara la adrenalina y quién anota la hora.</p></div></span></button>
           <button class="card case" type="button" aria-expanded="false"><span class="k">Caso 4 · <span class="team"></span></span><h3>Frasco de Td abierto hace 10 días en una jornada extramural</h3><span class="more">Ver qué decidir</span><span class="ans"><div><p>Se descarta: en extramural el frasco multidosis líquido dura hasta 7 días.</p></div></span></button>
         </div>
-        <p class="small st" style="--i:3">Después: quiz en Google Forms.</p>
+        <p class="small st" style="--i:3">Después: evaluación corta individual.</p>
       </div>
     </section>
 
@@ -1040,6 +1187,10 @@ h3{font-family:var(--display);font-weight:700}
           <li>Ministerio de Salud y Protección Social. Lineamiento técnico operativo: vacuna materna contra VSR en gestantes de 28 a 36 semanas. Bogotá: MinSalud. Disponible en: <a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/PAI/lineamiento-tecnico-operativo-vacuna-materna-vsr-pai-gestantes-28-36.pdf" target="_blank" rel="noopener">minsalud.gov.co</a></li>
           <li>Fundación Universitaria de San Gil. Administración de biológicos: protocolo de simulación. San Gil: Unisangil. Disponible en: <a href="https://hades.unisangil.edu.co/wp-content/uploads/Documentos/enfermeria/simulacion/admin_biologicos.pdf" target="_blank" rel="noopener">unisangil.edu.co</a></li>
           <li>Robson S, Manacapilli T. Enhancing performance under stress: stress inoculation training for battlefield airmen. Santa Monica: RAND Corporation; RR-750. Disponible en: <a href="https://www.rand.org/content/dam/rand/pubs/research_reports/RR700/RR750/RAND_RR750.pdf" target="_blank" rel="noopener">rand.org</a></li>
+          <li>Ministerio de Salud y Protección Social. Escenarios y conductas posexposición al virus de la rabia. Bogotá: MinSalud. Disponible en: <a href="https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/PAI/escenerarios-conductas-pos-exposicion-virus-rabia.pdf" target="_blank" rel="noopener">minsalud.gov.co</a></li>
+          <li>Instituto Nacional de Salud. Guía práctica para la atención integral de personas agredidas por un animal potencialmente transmisor de rabia. Bogotá: INS; 2009. Disponible en: <a href="https://www.minsalud.gov.co/Documentos%20y%20Publicaciones/Manejo%20integral%20de%20personas%20agredidas%20por%20animales%20transmisores%20de%20rabia.pdf" target="_blank" rel="noopener">minsalud.gov.co</a></li>
+          <li>Instituto Nacional de Salud. Boletín epidemiológico semanal, semana 2 de 2026: fiebre amarilla. Bogotá: INS; 2026. Disponible en: <a href="https://www.ins.gov.co/BibliotecaDigital/2026_Boletin_epidemiologico_semana_2.pdf" target="_blank" rel="noopener">ins.gov.co</a></li>
+          <li>Ministerio de Salud y Protección Social. Minsalud lanza nuevo llamado a la vacunación contra la fiebre amarilla ante aumento de riesgo por temporada alta. Boletín 101 de 2026 [Internet]. Bogotá; 2026 jun 24. Disponible en: <a href="https://www.minsalud.gov.co/Comunicaciones/noticias/2026/Paginas/minialud-lanza-nuevo-llamado-a-la-vacunacion-contra-la-fiebre-amarilla-ante-aumento-de-riesgo-por-temporada-de-alta.aspx" target="_blank" rel="noopener">minsalud.gov.co</a></li>
         </ol>
       </div>
     </section>
@@ -1460,6 +1611,46 @@ $('#rSpin').addEventListener('click',()=>{
   let ticks=0; const tk=setInterval(()=>{ tone(1200,0.03,'square',0.05); if(++ticks>24) clearInterval(tk); },120);
   setTimeout(()=>{ spinning=false; $('#rOut').innerHTML='Participa: <b>'+STUDENTS[i]+'</b>'; tone(784,0.2,'triangle',0.2); tone(1046,0.4,'triangle',0.2,0.18); }, reduce?50:3600);
 });
+</script>
+
+<script>
+(()=>{
+const FA=['Tolima concentró 9 de cada 10 casos en 2025, sobre todo en el oriente y el sur del departamento (Ataco, Chaparral, Rioblanco, Cunday, Villarrica, Prado, Purificación).',
+'También hubo casos en Meta (incluida Villavicencio) y en Guaviare. Son zonas rurales y de selva con el mosquito que la transmite.',
+'Putumayo, Caquetá, Amazonas y la frontera con selva tienen riesgo permanente. Antes de ir, vacunarse y llevar repelente y ropa larga.',
+'Si los envían a zonas rurales o de selva, vacúnense al menos 10 días antes de salir. Y en las brigadas, ustedes ayudan a que la comunidad se vacune: muchos casos fueron en personas que no quisieron o no pudieron vacunarse.'];
+const fz=document.getElementById('faZones'), fo=document.getElementById('faOut');
+if(fz){ const set=i=>{ fz.querySelectorAll('.chip').forEach((b,k)=>b.classList.toggle('on',k==i)); fo.textContent=FA[i]; };
+  fz.addEventListener('click',e=>{const b=e.target.closest('.chip'); if(b) set(+b.dataset.z);}); set(0); }
+const RAB=[['Perro o gato vacunado, que se puede observar y está sano. O el animal sigue vivo y sano 10 días después. O solo tocó piel sana.','Lavar la herida. No se pone vacuna antirrábica. Observar al animal 10 días.'],
+['Mordedura superficial única en brazos, piernas o tronco, lamedura en piel lastimada o arañazo sin sangrado, por un animal que no se puede observar.','Lavar la herida y poner la vacuna antirrábica: 4 dosis. No necesita suero.'],
+['Mordedura profunda o con sangrado, varias mordeduras, o en cabeza, cara, cuello, manos, dedos, pies o genitales. Lamedura en boca u ojos. Murciélago, mono, zorro u otro animal silvestre. Animal con signos de rabia o que muere o se pierde en los 10 días. Persona con defensas bajas.','Lavar la herida, poner la vacuna (4 dosis) y además el suero o inmunoglobulina antirrábica dentro y alrededor de la herida. Remitir.']];
+const rt=document.getElementById('rabTabs');
+if(rt){ const set=i=>{ rt.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-pressed',k==i)); document.getElementById('rabWhen').textContent=RAB[i][0]; document.getElementById('rabDo').textContent=RAB[i][1]; };
+  rt.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) set(+b.dataset.t);}); set(2); }
+const rd=document.getElementById('rabDays');
+if(rd){ rd.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; rd.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const d=new Date(); d.setDate(d.getDate()+(+b.dataset.d)); document.getElementById('rabDayOut').textContent='Día '+b.dataset.d+': '+d.toLocaleDateString('es-CO',{weekday:'long',day:'numeric',month:'long'})+'. Si se atrasa una dosis, se continúa: no se empieza de cero.'; }); }
+const kg=document.getElementById('rabKg');
+if(kg){ const f=n=>n.toLocaleString('es-CO'); const up=()=>{ const w=Math.max(0,+kg.value||0); document.getElementById('rabH').textContent=f(w*20)+' UI'; document.getElementById('rabE').textContent=f(w*40)+' UI'; }; kg.addEventListener('input',up); up(); }
+let SC=[0,0];
+document.querySelectorAll('.team-s .btn').forEach(b=>b.addEventListener('click',()=>{ const t=+b.dataset.s; SC[t]=Math.max(0,SC[t]+(+b.dataset.v)); document.getElementById('sc'+t).textContent=SC[t]; }));
+const MIS=[['Relevo de la nevera','En relevo, cada uno saca una tarjeta de vacuna de la nevera y la lleva a la mesa correcta: ¿viva o inactivada? ¿Por qué vía? Solo el líder ve la hoja de ayuda y da instrucciones, sin tocar las tarjetas. Si una tarjeta está mal, vuelve a la nevera.','5 minutos · 1 punto por tarjeta bien puesta',300],
+['Decidir en 60 segundos','Escuchen la situación. Tienen 60 segundos para decidir y levantar una tarjeta: verde (vacunar), amarilla (vacunar con cuidado o consultar) o roja (no vacunar o remitir). El líder explica en una frase.','5 situaciones · 2 puntos por decisión correcta',60],
+['El imprevisto','Ordenen en la pared los 8 pasos de una vacunación segura. Atención: el plan puede cambiar en cualquier momento.','4 puntos si el orden queda correcto',300],
+['¿Cómo les fue?','¿Qué sintieron cuando cambió el plan? ¿Quién tomó la iniciativa? ¿Qué los ayudó a recuperarse? ¿Qué harían igual en una brigada real?','Cada uno dice una palabra para la brigada',0]];
+const SIT=['Una persona mordida por un perro callejero en la mano, sangrando.','La nevera marca 11 °C desde hace 3 horas.','Gestante de 24 semanas sin las vacunas del embarazo.','Hombre de 35 años que viaja en 3 días a una zona de fiebre amarilla.','Bebé de 2 meses con fiebre de 38 °C al día siguiente de vacunarse.'];
+const mt=document.getElementById('misTabs');
+if(mt){ const set=i=>{ mt.querySelectorAll('button').forEach((b,k)=>b.setAttribute('aria-pressed',k==i)); const m=MIS[i]; document.getElementById('misT').textContent=m[0]; document.getElementById('misD').textContent=m[1];
+    document.getElementById('misX').innerHTML='<p class="small"><b>'+m[2]+'</b></p>'+(i==1?'<ol class="mis-list">'+SIT.map(s=>'<li>'+s+'</li>').join('')+'</ol>':'');
+    if(m[3]){ const sb=document.querySelector('#misTimer [data-a="set"][data-v="'+m[3]+'"]'); if(sb) sb.click(); } };
+  mt.addEventListener('click',e=>{const b=e.target.closest('button'); if(b) set(+b.dataset.m);}); set(0); }
+const yg=document.getElementById('ytGo');
+if(yg){ yg.addEventListener('click',()=>{ const f=document.createElement('iframe'); f.src='https://www.youtube-nocookie.com/embed/kLjs1KWJK5k?autoplay=1&rel=0'; f.title='Gerardo, las vacunas'; f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; yg.replaceWith(f); }); }
+const tb=document.getElementById('misTeams');
+if(tb){ tb.addEventListener('click',()=>{ const a=STUDENTS.slice().sort(()=>Math.random()-.5); const h=Math.ceil(a.length/2);
+  document.getElementById('misTeamOut').innerHTML='<b>Equipo 1:</b> '+a.slice(0,h).join(', ')+'<br><b>Equipo 2:</b> '+a.slice(h).join(', '); }); }
+})();
 </script>
 
 </body>
